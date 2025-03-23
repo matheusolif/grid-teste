@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.blog {
+    display: grid;
+    grid-template-areas: 
+    "header header"
+     "sidebar sidebar"
+     "posts posts"
+     "footer footer";
+     grid-template-columns: 1fr 1fr;
+     grid-template-rows: 60px 40px 1fr 40px;
+    height: 100vh;
+}
+
+
+.header {
+    grid-area: header;
+    background-color: #4CAF50; /* Cor do cabeçalho */
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #f4f4f4; /* Cor da barra lateral */
+    gap: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sidebar>ul {
+    display: flex;
+    gap: 6px;
+    list-style-type: none;
+}
+
+.sidebar a {
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 0.75rem;
+}
+
+.sidebar a:hover {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.posts {
+    grid-area: posts;
+    padding: 10px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(4, 200px);
+    height: 100%;
+}
+
+
+.post {
+    background-color: #ccc; /* Cor dos posts */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
+.post>h2 {
+    height: 50px;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    padding: 0.5rem;
+    margin: -10px -10px 10px -10px;
+}
+
+.post img {
+    /* min-height: 100px;
+    max-height: 100px;
+    width: 100%;
+   */
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+    min-height: 105px;
+    max-height: 110px;
+    border-radius: 0.5rem; 
+}
+
+@media screen and (min-width: 768px) {
+    .blog {
+        grid-template-areas: 
+        "header header"
+        "sidebar posts"
+        "footer footer";
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: 60px 1fr 40px;
+    }
+
+    .sidebar, .sidebar>ul{
+        display: block;
+    }
+    
+    .sidebar > h3 {
+        padding: 1rem;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 1rem 2rem;
+    }
+    .sidebar a:hover {
+        background-color: #4CAF50;
+        color: black;
+    }
+
+    .post>img {
+        object-fit: cover;
+        object-position: top center;
+        max-width: 100%;
+        max-height: 120px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .blog {
+        grid-template-rows: 80px 1fr 60px;
+    }
+
+    .posts {
+        padding: 1rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(4, 300px);
+        height: 100%;
+    }
+
+    .post>img {
+        object-fit: cover;
+        object-position: top center;
+        max-width: 100%;
+        max-height: 150px;
+    }
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #4CAF50; /* Cor do rodapé */
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
